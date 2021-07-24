@@ -38,3 +38,19 @@ def render_image(request):
         image.save(response, 'PNG')
         return Response
 
+# for 404 and 500 page
+# from django.shortcuts import render_to_response
+# from django.template import RequestContext
+
+# def handler404(request, *args, **argv):
+#     response = render_to_response('emails/404.html', {}, context_instance=RequestContext(request))
+#     response.status_code = 404
+#     return response
+
+# def handler500(request, *args,**argv):
+#     response = render_to_response('emails/500.html', {}, context_instance=RequestContext(request))
+#     response.status_code = 500
+#     return response
+
+def my_custom_page_not_found_view(request, exception):
+    return render(request, exception,'emails/404.html', {})
